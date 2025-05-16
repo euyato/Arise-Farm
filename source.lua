@@ -70,7 +70,7 @@ ImageButton.BackgroundColor3 = _G.Dark;
 ImageButton.ImageColor3 = Color3.fromRGB(250, 250, 250);
 ImageButton.ImageTransparency = 0;
 ImageButton.BackgroundTransparency = 0;
-ImageButton.Image = "rbxassetid://119850877212299";
+ImageButton.Image = "rbxassetid://90688766191343";
 ImageButton.AutoButtonColor = false;
 MakeDraggable(ImageButton, OutlineButton);
 CreateRounded(ImageButton, 10);
@@ -127,7 +127,7 @@ function Update:Notify(desc)
 	Image.BackgroundTransparency = 1;
 	Image.Position = UDim2.new(0, 8, 0, 8);
 	Image.Size = UDim2.new(0, 45, 0, 45);
-	Image.Image = "rbxassetid://119850877212299";
+	Image.Image = "rbxassetid://90688766191343";
 	Title.Parent = Frame;
 	Title.BackgroundColor3 = _G.Primary;
 	Title.BackgroundTransparency = 1;
@@ -240,7 +240,7 @@ function Update:StartLoad()
 		barTweenPart2.Completed:Connect(function()
 			wait(1);
 			running = false;
-			DescriptionLoader.Text = "Loaded!";
+			DescriptionLoader.Text = "Concluído!";
 			wait(0.5);
 			Loader:Destroy();
 		end);
@@ -249,7 +249,7 @@ function Update:StartLoad()
 		while running do
 			dotCount = (dotCount + 1) % 4;
 			local dots = string.rep(".", dotCount);
-			DescriptionLoader.Text = "Please wait" .. dots;
+			DescriptionLoader.Text = "Aguarde um momento" .. dots;
 			wait(0.5);
 		end;
 	end);
@@ -274,7 +274,7 @@ local SettingsLib = {
 				SettingsLib[i] = v;
 			end;
 		end;
-		print("Library Loaded!");
+		print("Library Concluído!");
 	else
 		return warn("Status : Undetected Executor");
 	end;
@@ -1553,7 +1553,7 @@ function Update:Window(Config)
 			Sep1.Size = UDim2.new(0, 20, 0, 36);
 			Sep1.Font = Enum.Font.GothamBold;
 			Sep1.RichText = true;
-			Sep1.Text = "âŒ©<font color=\"rgb(255, 0, 0)\">âŒ©</font>";
+			Sep1.Text = "<font color=\"rgb(255, 0, 0)\"></font>";
 			Sep1.TextColor3 = Color3.fromRGB(255, 255, 255);
 			Sep1.TextSize = 14;
 			Sep2.Name = "Sep2";
@@ -1576,7 +1576,7 @@ function Update:Window(Config)
 			Sep3.Size = UDim2.new(0, 20, 0, 36);
 			Sep3.Font = Enum.Font.GothamBold;
 			Sep3.RichText = true;
-			Sep3.Text = "<font color=\"rgb(255, 0, 0)\">âŒª</font>âŒª";
+			Sep3.Text = "<font color=\"rgb(255, 0, 0)\"></font>";
 			Sep3.TextColor3 = Color3.fromRGB(255, 255, 255);
 			Sep3.TextSize = 14;
 		end;
