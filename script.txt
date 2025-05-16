@@ -1,5 +1,5 @@
 -- local function scary()
---     warn("❌ This script must only be executed from the offical NoxHub loader")
+--     warn("❌ Este script só deve ser executado a partir do carregador oficial do AriseHub.")
 --         return
 --     end
 
@@ -14,29 +14,29 @@
 --    not _G._secondaryData.signature or 
 --    not _G._secondaryData.userKey or 
 --    not _G.__userKey then
---     print("❌ Security verification failed: missing token data or user key.")
+--     print("❌ Falha na verificação de segurança: dados de token ou chave de usuário ausentes.")
 --     scary()
 --     return
 -- end
 -- if _G._secondaryData.userKey ~= _G.__userKey then
---     print("❌ Security verification failed: user key mismatch.")
+--     print("❌ Falha na verificação de segurança: incompatibilidade de chave do usuário.")
 --     return
 -- end
 -- local tokenData = _G._secondaryData.nonce .. ":" .. _G._secondaryData.timestamp .. ":" .. _G.__userKey
 -- local expectedSignature = simpleHMAC(tokenData, SECRET_KEY)
 -- if expectedSignature ~= _G._secondaryData.signature then
---     print("❌ Security verification failed: token signature mismatch.")
+--     print("❌ Falha na verificação de segurança: incompatibilidade de assinatura de token.")
 --     return
 -- end
 -- local allowedTimeWindow = 300  -- seconds
 -- local currentTime = os.time()
 -- if math.abs(currentTime - tonumber(_G._secondaryData.timestamp)) > allowedTimeWindow then
---     print("❌ Security verification failed: token expired.")
+--     print("❌ Falha na verificação de segurança: token expirou.")
 --     return
 -- end
 -- _G._secondaryData = nil
 -- _G.__userKey = nil
-print("✅ Security verification passed. Loading NoxHub...")
+print("✅ Verificação de segurança aprovada. Carregando AriseHub.")
 if game.PlaceId == 2753915549 then
 	World1 = true;
 elseif game.PlaceId == 4442272183 then
@@ -60,14 +60,14 @@ local Library = Update:Window({
 	Size = UDim2.new(0, 450, 0, 300),
 	TabWidth = 140
 });
-local MainTab = Library:Tab("Main", "rbxassetid://10723407389");
-local FarmTab = Library:Tab("Farming", "rbxassetid://10723415335");
-local ItemsTab = Library:Tab("Items", "rbxassetid://10709782497");
-local SettingsTab = Library:Tab("Setting", "rbxassetid://10734950309");
-local LocalPlayerTab = Library:Tab("Local Player", "rbxassetid://10747373176");
-local HoldTab = Library:Tab("Hold Skill", "rbxassetid://10734984606");
+local MainTab = Library:Tab("Inicio", "rbxassetid://10723407389");
+local FarmTab = Library:Tab("Auto Farm", "rbxassetid://10723415335");
+local ItemsTab = Library:Tab("Auto Itens", "rbxassetid://10709782497");
+local SettingsTab = Library:Tab("Configurações", "rbxassetid://10734950309");
+local LocalPlayerTab = Library:Tab("Atacar Player", "rbxassetid://10747373176");
+local HoldTab = Library:Tab("Habilidades", "rbxassetid://10734984606");
 if World3 then
-	SeaTab = Library:Tab("Sea Event", "rbxassetid://10709761530");
+	SeaTab = Library:Tab("Eventos Maritimos", "rbxassetid://10709761530");
 	SettingSeaTab = Library:Tab("Setting Sea", "rbxassetid://10709810948");
 end;
 if World2 or World3 then
@@ -77,20 +77,20 @@ if World3 then
 	CraftTab = Library:Tab("Crafts", "rbxassetid://10723405360");
 	DragonDojoTab = Library:Tab("Dragon Dojo", "rbxassetid://10734951847");
 end;
-local StatsTab = Library:Tab("Stats Weapon", "rbxassetid://10709770317");
+local StatsTab = Library:Tab("Estatísticas", "rbxassetid://10709770317");
 if World3 or World2 then
-	RaceV4Tab = Library:Tab("Race V4", "rbxassetid://10723425539");
+	RaceV4Tab = Library:Tab("Raça V4", "rbxassetid://10723425539");
 end;
-local CombatTab = Library:Tab("Combat", "rbxassetid://10734975486");
+local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
 	RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
 end;
-local EspTab = Library:Tab("Esp", "rbxassetid://10723346959");
-local TeleportTab = Library:Tab("Teleport", "rbxassetid://10734886004");
-local ShopTab = Library:Tab("Shop", "rbxassetid://10734952479");
-local FruitTab = Library:Tab("Devil Fruit", "rbxassetid://10734883986");
-local MiscTab = Library:Tab("Misc", "rbxassetid://10723424838");
-local ServTab = Library:Tab("Server", "rbxassetid://10723426722");
+local EspTab = Library:Tab("Esp Linha", "rbxassetid://10723346959");
+local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
+local ShopTab = Library:Tab("Loja", "rbxassetid://10734952479");
+local FruitTab = Library:Tab("Notificador", "rbxassetid://10734883986");
+local MiscTab = Library:Tab("Outros", "rbxassetid://10723424838");
+local ServTab = Library:Tab("Servidor", "rbxassetid://10723426722");
 _G.Settings = {
 	Main = {
 		["Select Weapon"] = "Melee",
@@ -360,21 +360,21 @@ _G.Settings = {
 };
 (getgenv()).Load = function()
 	if readfile and writefile and isfile and isfolder then
-		if not isfolder("NoxHub") then
-			makefolder("NoxHub");
+		if not isfolder("AriseHub") then
+			makefolder("AriseHub");
 		end;
-		if not isfolder("NoxHub/Blox Fruits/") then
-			makefolder("NoxHub/Blox Fruits/");
+		if not isfolder("AriseHub/Blox Fruits/") then
+			makefolder("AriseHub/Blox Fruits/");
 		end;
-		if not isfile(("NoxHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json")) then
-			writefile("NoxHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", (game:GetService("HttpService")):JSONEncode(_G.Settings));
+		if not isfile(("AriseHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json")) then
+			writefile("AriseHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", (game:GetService("HttpService")):JSONEncode(_G.Settings));
 		else
-			local Decode = (game:GetService("HttpService")):JSONDecode(readfile("NoxHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"));
+			local Decode = (game:GetService("HttpService")):JSONDecode(readfile("AriseHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"));
 			for i, v in pairs(Decode) do
 				_G.Settings[i] = v;
 			end;
 		end;
-		print("Loaded!");
+		print("Carregado!");
 	else
 		return warn("Status : Undetected Executor");
 	end;
@@ -382,15 +382,15 @@ end;
 (getgenv()).SaveSetting = function()
 	if Update:SaveSettings() then
 		if readfile and writefile and isfile and isfolder then
-			if not isfile(("NoxHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json")) then
+			if not isfile(("AriseHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json")) then
 				(getgenv()).Load();
 			else
-				local Decode = (game:GetService("HttpService")):JSONDecode(readfile("NoxHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"));
+				local Decode = (game:GetService("HttpService")):JSONDecode(readfile("AriseHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"));
 				local Array = {};
 				for i, v in pairs(_G.Settings) do
 					Array[i] = v;
 				end;
-				writefile("NoxHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", (game:GetService("HttpService")):JSONEncode(Array));
+				writefile("AriseHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", (game:GetService("HttpService")):JSONEncode(Array));
 			end;
 		else
 			return warn("Status : Undetected Executor");
@@ -2356,7 +2356,7 @@ function UpdateTime()
 	local Hour = math.floor(GameTime / 60 ^ 2) % 24;
 	local Minute = math.floor(GameTime / 60 ^ 1) % 60;
 	local Second = math.floor(GameTime / 60 ^ 0) % 60;
-	Time:Set("[Game Time] : Hours : " .. Hour .. " Min : " .. Minute .. " Sec : " .. Second);
+	Time:Set("[ Ativo ] : Hours : " .. Hour .. " Min : " .. Minute .. " Sec : " .. Second);
 end;
 spawn(function()
 	while task.wait() do
@@ -2379,7 +2379,7 @@ end);
 Client1 = MainTab:Label("Client");
 function UpdateClient1()
 	local Ping = (game:GetService("Stats")).Network.ServerStatsItem["Data Ping"]:GetValueString();
-	Client1:Set("[Ping] : " .. Ping);
+	Client1:Set("[ Velocidade ] : " .. Ping);
 end;
 spawn(function()
 	while true do
@@ -2387,9 +2387,9 @@ spawn(function()
 		UpdateClient1();
 	end;
 end);
-MainTab:Button("Copy Discord Link", function()
-	setclipboard("https://discord.com/invite/25ms");
-	Update:Notify("Copied!", 3);
+MainTab:Button("Copiar Instagram Link", function()
+	setclipboard("https://instagram.com/euyato");
+	Update:Notify("Copiado!", 3);
 end);
 MainTab:Seperator("Level Farm");
 local WeaponList = {
@@ -5107,17 +5107,17 @@ elseif World3 then
 		pcall(function()
 			while wait(0.2) do
 				if game.Workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island") then
-					Kitsunecheck:Set("â›©ï¸ Kitsune Island Spawning");
+					Kitsunecheck:Set("Kitsune Island Spawning");
 					_G.KitsuneSpawn = true;
 				else
-					Kitsunecheck:Set("â›©ï¸ Kitsune Island Not Spawn");
+					Kitsunecheck:Set("Kitsune Island Not Spawn");
 					_G.KitsuneSpawn = false;
 				end;
 				if game.Workspace._WorldOrigin.Locations:FindFirstChild("Frozen Dimension") then
-					Frozencheck:Set("â„ï¸ Frozen Dimension Spawning");
+					Frozencheck:Set("Frozen Dimension Spawning");
 					_G.FrozenSpawn = true;
 				else
-					Frozencheck:Set("â„ï¸ Frozen Dimension Not Spawn");
+					Frozencheck:Set("Frozen Dimension Not Spawn");
 					_G.FrozenSpawn = false;
 				end;
 				if game.Workspace._WorldOrigin.Locations:FindFirstChild("Prehistoric Island") then
@@ -11529,7 +11529,7 @@ FruitTab:Button("Grab All Fruits", function()
 end);
 FruitTab:Seperator("Visual");
 FruitTab:Button("Rain Fruit", function()
-	for h, i in pairs((game:GetObjects("rbxassetid://14759368201"))[1]:GetChildren()) do
+	for h, i in pairs((game:GetObjects("rbxassetid://119850877212299"))[1]:GetChildren()) do
 		i.Parent = game.Workspace.Map;
 		i:MoveTo(game.Players.LocalPlayer.Character.PrimaryPart.Position + Vector3.new(math.random((-50), 50), 100, math.random((-50), 50)));
 		if i.Fruit:FindFirstChild("AnimationController") then
@@ -11917,9 +11917,9 @@ spawn(function()
 	pcall(function()
 		while wait(0.2) do
 			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island") then
-				KitsuneStatus:Set("â›©ï¸ Kitsune Island is Spawning");
+				KitsuneStatus:Set("Kitsune Island is Spawning");
 			else
-				KitsuneStatus:Set("â›©ï¸ Kitsune Island Not Spawn");
+				KitsuneStatus:Set("Kitsune Island Not Spawn");
 			end;
 		end;
 	end);
@@ -11928,9 +11928,9 @@ spawn(function()
 	pcall(function()
 		while wait(0.2) do
 			if game.Workspace._WorldOrigin.Locations:FindFirstChild("Frozen Dimension") then
-				FrozenStatus:Set("â„ï¸ Frozen Dimension Spawning");
+				FrozenStatus:Set("Frozen Dimension Spawning");
 			else
-				FrozenStatus:Set("â„ï¸ Frozen Dimension Not Spawn");
+				FrozenStatus:Set("Frozen Dimension Not Spawn");
 			end;
 		end;
 	end);
