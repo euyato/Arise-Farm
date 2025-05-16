@@ -110,7 +110,7 @@ _G.Settings = {
 	},
 	Event = {},
 	Farm = {
-		["Caçador de Elite Automático"] = false,
+		["Caçador de Elite"] = false,
 		["Caçador de Elite Hop"] = false,
 		["Selected Bone Farm"] = "Quest",
 		["Farm Auto Bone"] = false,
@@ -166,7 +166,7 @@ _G.Settings = {
 		["Gun Mastery Skill X"] = true,
 		["Definir Ponto de Nascimento"] = true,
 		["Auto Observation"] = false,
-		["Haki Automático"] = true,
+		["Auto Haki"] = true,
 		["Auto Rejoin"] = true,
 		["Bypass Anti Cheat"] = true
 	},
@@ -2250,7 +2250,7 @@ spawn(function()
 	pcall(function()
 		while wait() do
 			if World3 then
-				if _G.Settings.Farm["Auto Pirate Incursão"] or _G.Settings.Race["Auto Race V3"] or _G.Settings.Farm["Auto Matar Príncipe Bolo"] or _G.Settings.SeaStack["Teleport To Kitsune Island"] or _G.Settings.SeaStack["Teleport To Frozen Dimension"] or _G.Settings.SeaStack["Sail To Frozen Dimension"] or _G.Settings.SeaStack["Summon Frozen Dimension"] or _G.Settings.SeaStack["Summon Kitsune Island"] or _G.Settings.SeaStack["Teleport To Mirage Island"] or _G.Settings.Race["Auto Train"] or _G.Settings.Items["Auto Press Haki Button"] or _G.Settings.SeaEvent["Sail Boat"] or _G.Settings.Items["Auto Arena Trainer"] or _G.Settings.Race["Auto Kill Player After Trial"] or _G.Settings.Race["Tween To Highest Mirage"] or _G.Settings.Race["Auto Trial"] or _G.Settings.Race["Find Blue Gear"] or _G.Settings.Combat["Auto Kill Player Quest"] or _G.Settings.Items["Auto Cursed Dual Katana"] or _G.Settings.Farm["Farm Auto Bone"] or _G.Settings.Farm["Auto Matar Rei Dough"] or _G.Settings.Items["Auto Soul Guitar"] or _G.Settings.Items["Auto Tushita"] or _G.Settings.Farm["Caçador de Elite Automático"] or _G.AutoKillSelectedPlayer or _G.Settings.Items["Auto Rainbow Haki"] or _G.Settings.Items["Auto Dark Dagger"] or _G.Settings.Farm["Farm Auto Ectoplasm"] or _G.Settings.Farm["Observação V2"] or _G.Settings.Farm["Chapéu Mosqueteiro"] or _G.Settings.Items["Auto Holy Torch"] or _G.Settings.Items["Auto Hallow Scythe"] or _G.Settings.Farm["Farm Auto Katakuri"] or _G.Settings.Farm["Farm Auto Conjured Cocoa"] or _G.Settings.Farm["Farm Auto Fish Tail"] or _G.Settings.Farm["Farm Auto Gunpowder"] or _G.Settings.Farm["Farm Auto Dragon Scale"] or _G.Settings.Farm["Farm Auto Scrap Metal"] or _G.Settings.Farm["Farm Auto Mini Tusk"] or _G.Settings.Items["Auto Buddy Sword"] or _G.Settings.Items["Auto Canvander"] or _G.Settings.Farm["Farm Auto Leather"] or _G.Settings.Incursão["Auto Dungeon"] then
+				if _G.Settings.Farm["Auto Pirate Incursão"] or _G.Settings.Race["Auto Race V3"] or _G.Settings.Farm["Auto Matar Príncipe Bolo"] or _G.Settings.SeaStack["Teleport To Kitsune Island"] or _G.Settings.SeaStack["Teleport To Frozen Dimension"] or _G.Settings.SeaStack["Sail To Frozen Dimension"] or _G.Settings.SeaStack["Summon Frozen Dimension"] or _G.Settings.SeaStack["Summon Kitsune Island"] or _G.Settings.SeaStack["Teleport To Mirage Island"] or _G.Settings.Race["Auto Train"] or _G.Settings.Items["Auto Press Haki Button"] or _G.Settings.SeaEvent["Sail Boat"] or _G.Settings.Items["Auto Arena Trainer"] or _G.Settings.Race["Auto Kill Player After Trial"] or _G.Settings.Race["Tween To Highest Mirage"] or _G.Settings.Race["Auto Trial"] or _G.Settings.Race["Find Blue Gear"] or _G.Settings.Combat["Auto Kill Player Quest"] or _G.Settings.Items["Auto Cursed Dual Katana"] or _G.Settings.Farm["Farm Auto Bone"] or _G.Settings.Farm["Auto Matar Rei Dough"] or _G.Settings.Items["Auto Soul Guitar"] or _G.Settings.Items["Auto Tushita"] or _G.Settings.Farm["Caçador de Elite"] or _G.AutoKillSelectedPlayer or _G.Settings.Items["Auto Rainbow Haki"] or _G.Settings.Items["Auto Dark Dagger"] or _G.Settings.Farm["Farm Auto Ectoplasm"] or _G.Settings.Farm["Observação V2"] or _G.Settings.Farm["Chapéu Mosqueteiro"] or _G.Settings.Items["Auto Holy Torch"] or _G.Settings.Items["Auto Hallow Scythe"] or _G.Settings.Farm["Farm Auto Katakuri"] or _G.Settings.Farm["Farm Auto Conjured Cocoa"] or _G.Settings.Farm["Farm Auto Fish Tail"] or _G.Settings.Farm["Farm Auto Gunpowder"] or _G.Settings.Farm["Farm Auto Dragon Scale"] or _G.Settings.Farm["Farm Auto Scrap Metal"] or _G.Settings.Farm["Farm Auto Mini Tusk"] or _G.Settings.Items["Auto Buddy Sword"] or _G.Settings.Items["Auto Canvander"] or _G.Settings.Farm["Farm Auto Leather"] or _G.Settings.Incursão["Auto Dungeon"] then
 					if not (game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
 						local Noclip = Instance.new("BodyVelocity");
 						Noclip.Name = "BodyClip";
@@ -2267,7 +2267,7 @@ spawn(function()
 	pcall(function()
 		while wait() do
 			if World3 then
-				if _G.Settings.Farm["Auto Pirate Incursão"] or _G.Settings.Race["Auto Race V3"] or _G.Settings.Farm["Auto Matar Príncipe Bolo"] or _G.Settings.SeaStack["Teleport To Kitsune Island"] or _G.Settings.SeaStack["Teleport To Frozen Dimension"] or _G.Settings.SeaStack["Sail To Frozen Dimension"] or _G.Settings.SeaStack["Summon Frozen Dimension"] or _G.Settings.SeaStack["Summon Kitsune Island"] or _G.Settings.SeaStack["Teleport To Mirage Island"] or _G.Settings.Race["Auto Train"] or _G.Settings.Items["Auto Press Haki Button"] or _G.Settings.SeaEvent["Sail Boat"] or _G.Settings.Items["Auto Arena Trainer"] or _G.Settings.Race["Auto Kill Player After Trial"] or _G.Settings.Race["Tween To Highest Mirage"] or _G.Settings.Race["Auto Trial"] or _G.Settings.Race["Find Blue Gear"] or _G.Settings.Combat["Auto Kill Player Quest"] or _G.Settings.Items["Auto Cursed Dual Katana"] or _G.Settings.Farm["Farm Auto Bone"] or _G.Settings.Farm["Auto Matar Rei Dough"] or _G.Settings.Items["Auto Soul Guitar"] or _G.Settings.Items["Auto Tushita"] or _G.Settings.Farm["Caçador de Elite Automático"] or _G.AutoKillSelectedPlayer or _G.Settings.Items["Auto Rainbow Haki"] or _G.Settings.Items["Auto Dark Dagger"] or _G.Settings.Farm["Farm Auto Ectoplasm"] or _G.Settings.Farm["Observação V2"] or _G.Settings.Farm["Chapéu Mosqueteiro"] or _G.Settings.Items["Auto Holy Torch"] or _G.Settings.Items["Auto Hallow Scythe"] or _G.Settings.Farm["Farm Auto Katakuri"] or _G.Settings.Farm["Farm Auto Conjured Cocoa"] or _G.Settings.Farm["Farm Auto Fish Tail"] or _G.Settings.Farm["Farm Auto Gunpowder"] or _G.Settings.Farm["Farm Auto Dragon Scale"] or _G.Settings.Farm["Farm Auto Scrap Metal"] or _G.Settings.Farm["Farm Auto Mini Tusk"] or _G.Settings.Items["Auto Buddy Sword"] or _G.Settings.Items["Auto Canvander"] or _G.Settings.Farm["Farm Auto Leather"] or _G.Settings.Incursão["Auto Dungeon"] then
+				if _G.Settings.Farm["Auto Pirate Incursão"] or _G.Settings.Race["Auto Race V3"] or _G.Settings.Farm["Auto Matar Príncipe Bolo"] or _G.Settings.SeaStack["Teleport To Kitsune Island"] or _G.Settings.SeaStack["Teleport To Frozen Dimension"] or _G.Settings.SeaStack["Sail To Frozen Dimension"] or _G.Settings.SeaStack["Summon Frozen Dimension"] or _G.Settings.SeaStack["Summon Kitsune Island"] or _G.Settings.SeaStack["Teleport To Mirage Island"] or _G.Settings.Race["Auto Train"] or _G.Settings.Items["Auto Press Haki Button"] or _G.Settings.SeaEvent["Sail Boat"] or _G.Settings.Items["Auto Arena Trainer"] or _G.Settings.Race["Auto Kill Player After Trial"] or _G.Settings.Race["Tween To Highest Mirage"] or _G.Settings.Race["Auto Trial"] or _G.Settings.Race["Find Blue Gear"] or _G.Settings.Combat["Auto Kill Player Quest"] or _G.Settings.Items["Auto Cursed Dual Katana"] or _G.Settings.Farm["Farm Auto Bone"] or _G.Settings.Farm["Auto Matar Rei Dough"] or _G.Settings.Items["Auto Soul Guitar"] or _G.Settings.Items["Auto Tushita"] or _G.Settings.Farm["Caçador de Elite"] or _G.AutoKillSelectedPlayer or _G.Settings.Items["Auto Rainbow Haki"] or _G.Settings.Items["Auto Dark Dagger"] or _G.Settings.Farm["Farm Auto Ectoplasm"] or _G.Settings.Farm["Observação V2"] or _G.Settings.Farm["Chapéu Mosqueteiro"] or _G.Settings.Items["Auto Holy Torch"] or _G.Settings.Items["Auto Hallow Scythe"] or _G.Settings.Farm["Farm Auto Katakuri"] or _G.Settings.Farm["Farm Auto Conjured Cocoa"] or _G.Settings.Farm["Farm Auto Fish Tail"] or _G.Settings.Farm["Farm Auto Gunpowder"] or _G.Settings.Farm["Farm Auto Dragon Scale"] or _G.Settings.Farm["Farm Auto Scrap Metal"] or _G.Settings.Farm["Farm Auto Mini Tusk"] or _G.Settings.Items["Auto Buddy Sword"] or _G.Settings.Items["Auto Canvander"] or _G.Settings.Farm["Farm Auto Leather"] or _G.Settings.Incursão["Auto Dungeon"] then
 					for _, v in pairs((game:GetService("Players")).LocalPlayer.Character:GetDescendants()) do
 						if v:IsA("BasePart") then
 							v.CanCollide = false;
@@ -2387,7 +2387,7 @@ spawn(function()
 		UpdateClient1();
 	end;
 end);
-MainTab:Button("Copiar Instagram Link", function()
+MainTab:Button("Créditos Yato - 2025", function()
 	setclipboard("https://instagram.com/euyato");
 	Update:Notify("Copiado!", 3);
 end);
@@ -3716,21 +3716,21 @@ if World3 then
 			end);
 		end;
 	end);
-	FarmTab:Toggle("Caçador de Elite Automático", _G.Settings.Farm["Caçador de Elite Automático"], "Auto Kill Elite Hunter When Spawn", function(value)
-		_G.Settings.Farm["Caçador de Elite Automático"] = value;
-		StopTween(_G.Settings.Farm["Caçador de Elite Automático"]);
+	FarmTab:Toggle("Caçador de Elite", _G.Settings.Farm["Caçador de Elite"], "Auto Kill Elite Hunter When Spawn", function(value)
+		_G.Settings.Farm["Caçador de Elite"] = value;
+		StopTween(_G.Settings.Farm["Caçador de Elite"]);
 		(getgenv()).SaveSetting();
 	end);
-	FarmTab:Toggle("Caçador de Elite Automático Hop", _G.Settings.Farm["Caçador de Elite Automático Hop"], "Auto Hop If Elite Hunter Not Spawn", function(value)
-		_G.Settings.Farm["Caçador de Elite Automático Hop"] = value;
-		StopTween(_G.Settings.Farm["Caçador de Elite Automático Hop"]);
+	FarmTab:Toggle("Caçador de Elite Hop", _G.Settings.Farm["Caçador de Elite Hop"], "Auto Hop If Elite Hunter Not Spawn", function(value)
+		_G.Settings.Farm["Caçador de Elite Hop"] = value;
+		StopTween(_G.Settings.Farm["Caçador de Elite Hop"]);
 		(getgenv()).SaveSetting();
 	end);
 	spawn(function()
 		while wait(0.2) do
-			if _G.Settings.Farm["Caçador de Elite Automático Hop"] then
+			if _G.Settings.Farm["Caçador de Elite Hop"] then
 				pcall(function()
-					if _G.Settings.Farm["Caçador de Elite Automático"] then
+					if _G.Settings.Farm["Caçador de Elite"] then
 						if not (game:GetService("Workspace")).Enemies:FindFirstChild("Diablo") or (not (game:GetService("Workspace")).Enemies:FindFirstChild("Deandre")) or (not (game:GetService("Workspace")).Enemies:FindFirstChild("Urban")) then
 							Hop();
 						end;
@@ -3745,7 +3745,7 @@ if World3 then
 	local Elite = CFrame.new(-5418.892578125, 313.74130249023, -2826.2260742188);
 	spawn(function()
 		while wait(0.2) do
-			if _G.Settings.Farm["Caçador de Elite Automático"] and World3 then
+			if _G.Settings.Farm["Caçador de Elite"] and World3 then
 				pcall(function()
 					local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
 					if (game:GetService("Workspace")).Enemies:FindFirstChild("Diablo") or (game:GetService("Workspace")).Enemies:FindFirstChild("Deandre") or (game:GetService("Workspace")).Enemies:FindFirstChild("Urban") then
@@ -3769,7 +3769,7 @@ if World3 then
 													v.HumanoidRootPart.Size = Vector3.new(1, 1, 1);
 													topos(v.HumanoidRootPart.CFrame * Pos);
 													Attack();
-												until _G.Settings.Farm["Caçador de Elite Automático"] == false or v.Humanoid.Health <= 0 or (not v.Parent);
+												until _G.Settings.Farm["Caçador de Elite"] == false or v.Humanoid.Health <= 0 or (not v.Parent);
 											end;
 										end;
 									end;
@@ -4860,8 +4860,8 @@ spawn(function()
 		end;
 	end;
 end);
-SettingsTab:Toggle("Haki Automático", _G.Settings.Setting["Haki Automático"], "Auto Active Buso", function(value)
-	_G.Settings.Setting["Haki Automático"] = value;
+SettingsTab:Toggle("Auto Haki", _G.Settings.Setting["Auto Haki"], "Auto Active Buso", function(value)
+	_G.Settings.Setting["Auto Haki"] = value;
 	(getgenv()).SaveSetting();
 end);
 SettingsTab:Toggle("Auto Rejoin", _G.Settings.Setting["Auto Rejoin"], "Auto Rejoin if disconnected or get kicked", function(value)
@@ -4881,7 +4881,7 @@ spawn(function()
 end);
 spawn(function()
 	while wait(0.2) do
-		if _G.Settings.Setting["Haki Automático"] then
+		if _G.Settings.Setting["Auto Haki"] then
 			if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
 				local args = {
 					[1] = "Buso"
@@ -7502,7 +7502,7 @@ if World3 then
 										v.HumanoidRootPart.Size = Vector3.new(1, 1, 1);
 										topos(v.HumanoidRootPart.CFrame * Pos);
 										Attack();
-									until _G.Settings.Farm["Caçador de Elite Automático"] == false or v.Humanoid.Health <= 0 or (not v.Parent);
+									until _G.Settings.Farm["Caçador de Elite"] == false or v.Humanoid.Health <= 0 or (not v.Parent);
 								end;
 							end;
 						end;
