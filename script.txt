@@ -11898,17 +11898,17 @@ task.spawn(function()
 	while task.wait() do
 		pcall(function()
 			if (game:GetService("Lighting")).Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
-				FM:Set("ðŸŒ• Full Moon 100%");
+				FM:Set("Full Moon 100%");
 			elseif (game:GetService("Lighting")).Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
-				FM:Set("ðŸŒ– Full Moon 75%");
+				FM:Set("Full Moon 75%");
 			elseif (game:GetService("Lighting")).Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709143733" then
-				FM:Set("ðŸŒ— Full Moon 50%");
+				FM:Set("Full Moon 50%");
 			elseif (game:GetService("Lighting")).Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709150401" then
-				FM:Set("ðŸŒ˜ Full Moon 25%");
+				FM:Set("Full Moon 25%");
 			elseif (game:GetService("Lighting")).Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149680" then
-				FM:Set("ðŸŒ˜ Full Moon 15%");
+				FM:Set("Full Moon 15%");
 			else
-				FM:Set("ðŸŒ‘ Full Moon 0%");
+				FM:Set("Full Moon 0%");
 			end;
 		end);
 	end;
@@ -11953,9 +11953,9 @@ spawn(function()
 		while wait(0.2) do
 			for i, v in pairs(game.Workspace:GetChildren()) do
 				if string.find(v.Name, "Fruit") then
-					FindFruit:Set("ðŸ Find " .. v.Name);
+					FindFruit:Set("Find " .. v.Name);
 				else
-					FindFruit:Set("ðŸ Nothing");
+					FindFruit:Set("Nothing");
 				end;
 			end;
 		end;
@@ -11966,9 +11966,9 @@ spawn(function()
 		pcall(function()
 			local response = (((game:GetService("ReplicatedStorage")):WaitForChild("Remotes")):WaitForChild("CommF_")):InvokeServer("ColorsDealer", "1");
 			if response then
-				HakiDealer:Set("ðŸŸ¢ Master Of Auras Spawning");
+				HakiDealer:Set("Master Of Auras Spawning");
 			else
-				HakiDealer:Set("ðŸ”´ Master Of Auras Not Spawn");
+				HakiDealer:Set("Master Of Auras Not Spawn");
 			end;
 		end);
 	end;
@@ -12016,7 +12016,7 @@ if World2 or World3 then
 	HakiDealer = ServTab:Label("Haki Dealer");
 end;
 FindFruit = ServTab:Label("Devil Fruit");
-ServTab:Seperator("Advance Fruit Stock");
+ServTab:Seperator("Miragem Fruit Stock");
 local ReplicatedStorage = game:GetService("ReplicatedStorage");
 local Remotes = ReplicatedStorage.Remotes;
 local Event = Remotes.CommF_;
