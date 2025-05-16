@@ -48,7 +48,7 @@ end;
 -- print("-- [[ Webhook ]] --");
 -- (loadstring(game:HttpGet("https://gitshare.me/backend/api/files/677ec71a-082b-4b8c-a1e8-f590f2ab286a/download")))();
 -- print("--------------------------------------------------------------------------");
-local Update = (loadstring(Game:HttpGet("https://you.whimper.xyz/sources/nox/data/fruitsource.lua")))();
+local Update = (loadstring(Game:HttpGet("https://raw.githubusercontent.com/euyato/arise-farm/main/source.lua")))();
 if Update:LoadAnimation() then
 	Update:StartLoad();
 end;
@@ -11529,7 +11529,7 @@ FruitTab:Button("Grab All Fruits", function()
 end);
 FruitTab:Seperator("Visual");
 FruitTab:Button("Rain Fruit", function()
-	for h, i in pairs((game:GetObjects("rbxassetid://119850877212299"))[1]:GetChildren()) do
+	for h, i in pairs((game:GetObjects("rbxassetid://14759368201"))[1]:GetChildren()) do
 		i.Parent = game.Workspace.Map;
 		i:MoveTo(game.Players.LocalPlayer.Character.PrimaryPart.Position + Vector3.new(math.random((-50), 50), 100, math.random((-50), 50)));
 		if i.Fruit:FindFirstChild("AnimationController") then
@@ -12051,4 +12051,4 @@ for _, v in pairs(resultNormal) do
 		ServTab:Label(tostring(NormalFruitInfo));
 	end;
 end;
-print("Script Loaded!");
+print("Script Carregado!");
