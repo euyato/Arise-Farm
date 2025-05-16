@@ -2368,7 +2368,7 @@ end);
 Client = MainTab:Label("Client");
 function UpdateClient()
 	local Fps = workspace:GetRealPhysicsFPS();
-	Client:Set("[Fps] : " .. Fps);
+	Client:Set("[ Fps ] : " .. Fps);
 end;
 spawn(function()
 	while true do
