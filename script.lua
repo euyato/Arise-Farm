@@ -83,8 +83,8 @@ if World3 or World2 then
 end;
 local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
-	
--- Toggles separados para funções da Raid
+	RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
+
 RaidTab:Toggle("Auto Buy Chip", false, "Compra o chip automaticamente", function(value)
     _G.Settings.Raid["Auto Buy Chip"] = value
     SaveSetting()
