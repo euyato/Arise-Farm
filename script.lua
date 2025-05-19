@@ -96,11 +96,44 @@ RaidTab:Toggle("Auto Start Raid", false, "Começa a raid automaticamente", funct
 end)
 
 RaidTab:Toggle("Auto Kill Mob", false, "Ataca os inimigos automaticamente", function(value)
+    -- Prevenir ir para a água
+    if value then
+        spawn(function()
+            while _G.Settings.Raid["Auto Kill Mob"] do
+                task.wait(0.5)
+                local char = game.Players.LocalPlayer.Character
+                if char and char:FindFirstChild("HumanoidRootPart") then
+                    local posY = char.HumanoidRootPart.Position.Y
+                    if posY < 0 then
+                        warn("Detectado submerso, teletransportando de volta ao solo.")
+                        char.HumanoidRootPart.CFrame = CFrame.new(0, 150, 0) -- posição segura
+                    end
+                end
+            end
+        end)
+    end
     _G.Settings.Raid["Auto Kill Mob"] = value
     SaveSetting()
 end)
 
 RaidTab:Toggle("Auto Next Island", false, "Vai para próxima ilha automaticamente", function(value)
+    -- Prevenir seguir outra raid que não seja a do jogador
+    if value then
+        spawn(function()
+            while _G.Settings.Raid["Auto Next Island"] do
+                task.wait(0.5)
+                local raidFolder = game:GetService("Workspace"):FindFirstChild("RaidIslands")
+                if raidFolder then
+                    for _, island in pairs(raidFolder:GetChildren()) do
+                        if island:IsA("Model") and island:FindFirstChild("Owner") and island.Owner.Value == game.Players.LocalPlayer then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.PrimaryPart.CFrame + Vector3.new(0, 50, 0)
+                            break
+                        end
+                    end
+                end
+            end
+        end)
+    end
     _G.Settings.Raid["Auto Next Island"] = value
     SaveSetting()
 end)
@@ -119,11 +152,44 @@ RaidTab:Toggle("Auto Start Raid", false, "Começa a raid automaticamente", funct
 end)
 
 RaidTab:Toggle("Auto Kill Mob", false, "Ataca os inimigos automaticamente", function(value)
+    -- Prevenir ir para a água
+    if value then
+        spawn(function()
+            while _G.Settings.Raid["Auto Kill Mob"] do
+                task.wait(0.5)
+                local char = game.Players.LocalPlayer.Character
+                if char and char:FindFirstChild("HumanoidRootPart") then
+                    local posY = char.HumanoidRootPart.Position.Y
+                    if posY < 0 then
+                        warn("Detectado submerso, teletransportando de volta ao solo.")
+                        char.HumanoidRootPart.CFrame = CFrame.new(0, 150, 0) -- posição segura
+                    end
+                end
+            end
+        end)
+    end
     _G.Settings.Raid["Auto Kill Mob"] = value
     SaveSetting()
 end)
 
 RaidTab:Toggle("Auto Next Island", false, "Vai para próxima ilha automaticamente", function(value)
+    -- Prevenir seguir outra raid que não seja a do jogador
+    if value then
+        spawn(function()
+            while _G.Settings.Raid["Auto Next Island"] do
+                task.wait(0.5)
+                local raidFolder = game:GetService("Workspace"):FindFirstChild("RaidIslands")
+                if raidFolder then
+                    for _, island in pairs(raidFolder:GetChildren()) do
+                        if island:IsA("Model") and island:FindFirstChild("Owner") and island.Owner.Value == game.Players.LocalPlayer then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.PrimaryPart.CFrame + Vector3.new(0, 50, 0)
+                            break
+                        end
+                    end
+                end
+            end
+        end)
+    end
     _G.Settings.Raid["Auto Next Island"] = value
     SaveSetting()
 end)
@@ -12224,6 +12290,24 @@ spawn(function()
                     game.ReplicatedStorage.Remotes.NextIsland:FireServer()
                 end
             end)
+        end
+    end
+end)
+
+
+-- Monitorar fim da raid para desativar funções automaticamente
+spawn(function()
+    while task.wait(2) do
+        local raidActive = game:GetService("Workspace"):FindFirstChild("RaidActive")
+        if not raidActive then
+            if _G.Settings.Raid["Auto Buy Chip"] or _G.Settings.Raid["Auto Start Raid"] or _G.Settings.Raid["Auto Kill Mob"] or _G.Settings.Raid["Auto Next Island"] then
+                _G.Settings.Raid["Auto Buy Chip"] = false
+                _G.Settings.Raid["Auto Start Raid"] = false
+                _G.Settings.Raid["Auto Kill Mob"] = false
+                _G.Settings.Raid["Auto Next Island"] = false
+                SaveSetting()
+                warn("Raid finalizada. Desativando funções automaticamente.")
+            end
         end
     end
 end)
