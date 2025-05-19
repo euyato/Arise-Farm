@@ -106,6 +106,36 @@ RaidTab:Toggle("Auto Next Island", false, "Vai para próxima ilha automaticament
 end)
 
 RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
+
+-- Adiciona botões individuais de raid
+RaidTab:Toggle("Auto Buy Chip", false, "Compra o chip automaticamente", function(value)
+    _G.Settings.Raid["Auto Buy Chip"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Start Raid", false, "Começa a raid automaticamente", function(value)
+    _G.Settings.Raid["Auto Start Raid"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Kill Mob", false, "Ataca os inimigos automaticamente", function(value)
+    _G.Settings.Raid["Auto Kill Mob"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Next Island", false, "Vai para próxima ilha automaticamente", function(value)
+    _G.Settings.Raid["Auto Next Island"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Dungeon (Completo)", false, "Ativa todas as funções de raid", function(value)
+    _G.Settings.Raid["Auto Buy Chip"] = value
+    _G.Settings.Raid["Auto Start Raid"] = value
+    _G.Settings.Raid["Auto Kill Mob"] = value
+    _G.Settings.Raid["Auto Next Island"] = value
+    SaveSetting()
+end)
+
 end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
 local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
