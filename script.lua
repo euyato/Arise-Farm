@@ -71,43 +71,22 @@ SeaTab = Library:Tab("Eventos Maritimos", "rbxassetid://10709761530");
 SettingSeaTab = Library:Tab("Config Eventos", "rbxassetid://10709810948");
 end;
 if World2 or World3 then
-    local RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
-    local section = RaidTab:Section("Configurações de Raid");
-
-    section:Toggle("Auto Start Dungeon", _G.Settings.Raid["Auto Start Dungeon"], function(value)
-        _G.Settings.Raid["Auto Start Dungeon"] = value;
-        SaveSetting();
-    end);
-
-    section:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(value)
-        _G.Settings.Raid["Auto Buy Chip"] = value;
-        SaveSetting();
-    end);
-
-    section:Toggle("Auto Kill Mob", _G.Settings.Raid["Auto Kill Mob Dungeon"], function(value)
-        _G.Settings.Raid["Auto Kill Mob Dungeon"] = value;
-        SaveSetting();
-    end);
-
-    section:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], function(value)
-        _G.Settings.Raid["Auto Next Island"] = value;
-        SaveSetting();
-    end);
-
-    
-
-    
-
-    section:Toggle("Teleport to Lab", _G.Settings.SeaStack["Teleport To Lab"], function(value)
-        _G.Settings.SeaStack["Teleport To Lab"] = value;
-        SaveSetting();
-    end);
-end;)
-;
+	SeaStackTab = Library:Tab("Terceiro Mar", "rbxassetid://10747376931");
+end;
+if World3 then
+CraftTab = Library:Tab("Artesanato", "rbxassetid://10723405360");
+DragonDojoTab = Library:Tab("Dragon Dojo", "rbxassetid://10734951847");
+end;
+local StatsTab = Library:Tab("Estatísticas", "rbxassetid://10709770317");
+if World3 or World2 then
+RaceV4Tab = Library:Tab("Raça V4", "rbxassetid://10723425539");
+end;
+local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
+if World2 or World3 then
+RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
 end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
-local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004")
-
+local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
 local ShopTab = Library:Tab("Loja", "rbxassetid://10734952479");
 local FruitTab = Library:Tab("Frutas", "rbxassetid://10734883986");
 local MiscTab = Library:Tab("Outros", "rbxassetid://10723424838");
@@ -343,7 +322,9 @@ _G.Settings = {
 		["Enable PvP"] = false
 	},
 	Raid = {
-		["Selected Chip"] = nil,		["Auto Awaken"] = false,
+		["Selected Chip"] = nil,
+		["Auto Dungeon"] = false,
+		["Auto Awaken"] = false,
 		["Price Devil Fruit"] = 1000000,
 		["Unstore Devil Fruit"] = false,
 		["Law Raid"] = false
@@ -10791,7 +10772,7 @@ if World2 or World3 then
 			end);
 		end;
 	end);
-	RaidTab:Button("Teleporte Laboratorio", function()
+	RaidTab:Button("Teleport to Lab", function()
 		if World2 then
 			topos(CFrame.new(-6438.73535, 250.645355, -4501.50684));
 		elseif World3 then
