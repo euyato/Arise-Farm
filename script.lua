@@ -71,39 +71,38 @@ SeaTab = Library:Tab("Eventos Maritimos", "rbxassetid://10709761530");
 SettingSeaTab = Library:Tab("Config Eventos", "rbxassetid://10709810948");
 end;
 if World2 or World3 then
-    local RaidTab = Library:Tab("Raid", "rbxassetid://10723345749")
-    local section = RaidTab:Section("Configurações de Raid")
+    local RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
+    local section = RaidTab:Section("Configurações de Raid");
 
     section:Toggle("Auto Start Dungeon", _G.Settings.Raid["Auto Start Dungeon"], function(value)
-        _G.Settings.Raid["Auto Start Dungeon"] = value
-        SaveSetting()
-    end)
+        _G.Settings.Raid["Auto Start Dungeon"] = value;
+        SaveSetting();
+    end);
 
     section:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(value)
-        _G.Settings.Raid["Auto Buy Chip"] = value
-        SaveSetting()
-    end)
+        _G.Settings.Raid["Auto Buy Chip"] = value;
+        SaveSetting();
+    end);
 
     section:Toggle("Auto Kill Mob", _G.Settings.Raid["Auto Kill Mob Dungeon"], function(value)
-        _G.Settings.Raid["Auto Kill Mob Dungeon"] = value
-        SaveSetting()
-    end)
+        _G.Settings.Raid["Auto Kill Mob Dungeon"] = value;
+        SaveSetting();
+    end);
 
     section:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], function(value)
-        _G.Settings.Raid["Auto Next Island"] = value
-        SaveSetting()
-    end)
+        _G.Settings.Raid["Auto Next Island"] = value;
+        SaveSetting();
+    end);
 
     
 
     
 
-    -- Adicionando toggle de Teleporte para Laboratório dentro da aba de Raid
     section:Toggle("Teleport to Lab", _G.Settings.SeaStack["Teleport To Lab"], function(value)
-        _G.Settings.SeaStack["Teleport To Lab"] = value
-        SaveSetting()
-    end)
-end)
+        _G.Settings.SeaStack["Teleport To Lab"] = value;
+        SaveSetting();
+    end);
+end;)
 ;
 end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
