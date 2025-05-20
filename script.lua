@@ -83,7 +83,38 @@ RaceV4Tab = Library:Tab("Raça V4", "rbxassetid://10723425539");
 end;
 local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
-RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
+RaidTab = Library:Tab("Raid", "rbxassetid://10723345749")
+RaidTab:Section("Dungeon", function(section)
+    section:Toggle("Teleport to Lab", _G.Settings.SeaStack["Teleport To Lab"], function(value)
+        _G.Settings.SeaStack["Teleport To Lab"] = value
+        SaveSetting()
+    end)
+    section:Toggle("Auto Start Dungeon", _G.Settings.Raid["Auto Start Dungeon"], function(value)
+        _G.Settings.Raid["Auto Start Dungeon"] = value
+        SaveSetting()
+    end)
+    section:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(value)
+        _G.Settings.Raid["Auto Buy Chip"] = value
+        SaveSetting()
+    end)
+    section:Toggle("Auto Kill Mob", _G.Settings.Raid["Auto Kill Mob Dungeon"], function(value)
+        _G.Settings.Raid["Auto Kill Mob Dungeon"] = value
+        SaveSetting()
+    end)
+    section:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], function(value)
+        _G.Settings.Raid["Auto Next Island"] = value
+        SaveSetting()
+    end)
+    section:Toggle("Auto Awaken", _G.Settings.Raid["Auto Awaken"], function(value)
+        _G.Settings.Raid["Auto Awaken"] = value
+        SaveSetting()
+    end)
+    section:Toggle("Law Raid", _G.Settings.Raid["Law Raid"], function(value)
+        _G.Settings.Raid["Law Raid"] = value
+        SaveSetting()
+    end)
+end)
+;
 end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
 local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
