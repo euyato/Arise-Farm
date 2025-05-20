@@ -85,81 +85,85 @@ local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
 RaidTab = Library:Tab("Raid", "rbxassetid://10723345749")
 
--- Corrigindo variáveis extras se ainda não existirem
-_G.Settings.Raid["Auto Buy Chip"] = _G.Settings.Raid["Auto Buy Chip"] or false
-_G.Settings.Raid["Auto Attack Mobs"] = _G.Settings.Raid["Auto Attack Mobs"] or false
-_G.Settings.Raid["Auto Next Island"] = _G.Settings.Raid["Auto Next Island"] or false
 
--- Seletor de Chip
-RaidTab:Dropdown("Choose Chip", {"Flame", "Ice", "Quake", "Light", "Dark", "String", "Rumble", "Magma", "Buddha"}, function(v)
-    _G.Settings.Raid["Selected Chip"] = v
-    SaveSetting()
-end)
+if RaidTab then
+    -- Garantir que as variáveis existem
+    _G.Settings.Raid["Auto Buy Chip"] = _G.Settings.Raid["Auto Buy Chip"] or false;
+    _G.Settings.Raid["Auto Attack Mobs"] = _G.Settings.Raid["Auto Attack Mobs"] or false;
+    _G.Settings.Raid["Auto Next Island"] = _G.Settings.Raid["Auto Next Island"] or false;
 
--- Iniciar Raid
-RaidTab:Toggle("Iniciar Raid", _G.Settings.Raid["Auto Dungeon"], function(v)
-    _G.Settings.Raid["Auto Dungeon"] = v
-    SaveSetting()
-end)
+    -- Seletor de Chip
+    RaidTab:Dropdown("Choose Chip", {"Flame", "Ice", "Quake", "Light", "Dark", "String", "Rumble", "Magma", "Buddha"}, function(v)
+        _G.Settings.Raid["Selected Chip"] = v;
+        SaveSetting();
+    end);
 
--- Comprar Chip
-RaidTab:Toggle("Comprar Chip", _G.Settings.Raid["Auto Buy Chip"], function(v)
-    _G.Settings.Raid["Auto Buy Chip"] = v
-    SaveSetting()
-end)
+    -- Iniciar Raid
+    RaidTab:Toggle("Iniciar Raid", _G.Settings.Raid["Auto Dungeon"], function(v)
+        _G.Settings.Raid["Auto Dungeon"] = v;
+        SaveSetting();
+    end);
 
--- Atacar Mobs
-RaidTab:Toggle("Atacar Mobs", _G.Settings.Raid["Auto Attack Mobs"], function(v)
-    _G.Settings.Raid["Auto Attack Mobs"] = v
-    SaveSetting()
-end)
+    -- Comprar Chip
+    RaidTab:Toggle("Comprar Chip", _G.Settings.Raid["Auto Buy Chip"], function(v)
+        _G.Settings.Raid["Auto Buy Chip"] = v;
+        SaveSetting();
+    end);
 
--- Auto Ilhas
-RaidTab:Toggle("Auto Ilhas", _G.Settings.Raid["Auto Next Island"], function(v)
-    _G.Settings.Raid["Auto Next Island"] = v
-    SaveSetting()
-end)
+    -- Atacar Mobs
+    RaidTab:Toggle("Atacar Mobs", _G.Settings.Raid["Auto Attack Mobs"], function(v)
+        _G.Settings.Raid["Auto Attack Mobs"] = v;
+        SaveSetting();
+    end);
 
--- Funções automáticas para as opções ativadas
-spawn(function()
-    while task.wait(1) do
-        if _G.Settings.Raid["Auto Buy Chip"] then
-            pcall(function()
-                local args = {
-                    [1] = "RaidsNpc",
-                    [2] = "Select",
-                    [3] = _G.Settings.Raid["Selected Chip"] or "Flame"
-                }
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-            end)
-        end
+    -- Auto Ilhas
+    RaidTab:Toggle("Auto Ilhas", _G.Settings.Raid["Auto Next Island"], function(v)
+        _G.Settings.Raid["Auto Next Island"] = v;
+        SaveSetting();
+    end);
 
-        if _G.Settings.Raid["Auto Attack Mobs"] then
-            pcall(function()
-                for _, mob in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0)
-                        game:GetService("VirtualInputManager"):SendKeyEvent(true, "Z", false, game)
-                        game:GetService("VirtualInputManager"):SendKeyEvent(false, "Z", false, game)
-                        break
-                    end
-                end
-            end)
-        end
+    -- Execução das funções automáticas
+    spawn(function()
+        while task.wait(1) do
+            if _G.Settings.Raid["Auto Buy Chip"] then
+                pcall(function()
+                    local args = {
+                        [1] = "RaidsNpc",
+                        [2] = "Select",
+                        [3] = _G.Settings.Raid["Selected Chip"] or "Flame"
+                    };
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args));
+                end);
+            end;
 
-        if _G.Settings.Raid["Auto Next Island"] then
-            pcall(function()
-                local Islands = game:GetService("Workspace")["_WorldOrigin"].RaidEnemies
-                for _, island in pairs(Islands:GetChildren()) do
-                    if island:FindFirstChild("Island") then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.Island.CFrame
-                        break
-                    end
-                end
-            end)
-        end
-    end
-end)
+            if _G.Settings.Raid["Auto Attack Mobs"] then
+                pcall(function()
+                    for _, mob in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0);
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+                            game:GetService("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+                            break;
+                        end;
+                    end;
+                end);
+            end;
+
+            if _G.Settings.Raid["Auto Next Island"] then
+                pcall(function()
+                    local Islands = game:GetService("Workspace")["_WorldOrigin"].RaidEnemies;
+                    for _, island in pairs(Islands:GetChildren()) do
+                        if island:FindFirstChild("Island") then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = island.Island.CFrame;
+                            break;
+                        end;
+                    end;
+                end);
+            end;
+        end;
+    end);
+end;
+
 
 ;
 end;
