@@ -74,8 +74,8 @@ if World2 or World3 then
 	SeaStackTab = Library:Tab("Terceiro Mar", "rbxassetid://10747376931");
 end;
 if World3 then
-	CraftTab = Library:Tab("Artesanato", "rbxassetid://10723405360");
-	DragonDojoTab = Library:Tab("Dragon Dojo", "rbxassetid://10734951847");
+CraftTab = Library:Tab("Artesanato", "rbxassetid://10723405360");
+DragonDojoTab = Library:Tab("Dragon Dojo", "rbxassetid://10734951847");
 end;
 local StatsTab = Library:Tab("Estatísticas", "rbxassetid://10709770317");
 if World3 or World2 then
@@ -83,7 +83,7 @@ if World3 or World2 then
 end;
 local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
-local RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
+RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
 local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
 local ShopTab = Library:Tab("Loja", "rbxassetid://10734952479");
