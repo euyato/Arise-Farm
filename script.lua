@@ -67,8 +67,8 @@ local SettingsTab = Library:Tab("Configurações", "rbxassetid://10734950309");
 local LocalPlayerTab = Library:Tab("Local Player", "rbxassetid://10747373176");
 local HoldTab = Library:Tab("Habilidades", "rbxassetid://10734984606");
 if World3 then
-	SeaTab = Library:Tab("Eventos Maritimos", "rbxassetid://10709761530");
-	SettingSeaTab = Library:Tab("Config Eventos", "rbxassetid://10709810948");
+SeaTab = Library:Tab("Eventos Maritimos", "rbxassetid://10709761530");
+SettingSeaTab = Library:Tab("Config Eventos", "rbxassetid://10709810948");
 end;
 if World2 or World3 then
 	SeaStackTab = Library:Tab("Terceiro Mar", "rbxassetid://10747376931");
@@ -79,11 +79,12 @@ DragonDojoTab = Library:Tab("Dragon Dojo", "rbxassetid://10734951847");
 end;
 local StatsTab = Library:Tab("Estatísticas", "rbxassetid://10709770317");
 if World3 or World2 then
-	RaceV4Tab = Library:Tab("Raça V4", "rbxassetid://10723425539");
+RaceV4Tab = Library:Tab("Raça V4", "rbxassetid://10723425539");
 end;
 local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
 RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
+end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
 local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
 local ShopTab = Library:Tab("Loja", "rbxassetid://10734952479");
@@ -12122,55 +12123,3 @@ for _, v in pairs(resultNormal) do
 	end;
 end;
 print("Script Carregado!");
-
--- Execução das funções de raid separadas
-
-spawn(function()
-    while task.wait(1) do
-        if _G.Settings.Raid["Auto Buy Chip"] then
-            pcall(function()
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("RaidsNpc", "Select", _G.Settings.Raid["Selected Chip"])
-            end)
-        end
-    end
-end)
-
-spawn(function()
-    while task.wait(1) do
-        if _G.Settings.Raid["Auto Start Raid"] then
-            pcall(function()
-                for i,v in pairs(workspace._NPCs:GetChildren()) do
-                    if v.Name == "RaidsNpc" and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 25 then
-                        fireclickdetector(v:FindFirstChildOfClass("ClickDetector"))
-                    end
-                end
-            end)
-        end
-    end
-end)
-
-spawn(function()
-    while task.wait(0.5) do
-        if _G.Settings.Raid["Auto Kill Mob"] then
-            pcall(function()
-                for _, mob in pairs(workspace.Enemies:GetChildren()) do
-                    if mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0, 25, 0)
-                    end
-                end
-            end)
-        end
-    end
-end)
-
-spawn(function()
-    while task.wait(2) do
-        if _G.Settings.Raid["Auto Next Island"] then
-            pcall(function()
-                if game:GetService("ReplicatedStorage"):FindFirstChild("Remotes") and game.ReplicatedStorage.Remotes:FindFirstChild("NextIsland") then
-                    game.ReplicatedStorage.Remotes.NextIsland:FireServer()
-                end
-            end)
-        end
-    end
-end)
