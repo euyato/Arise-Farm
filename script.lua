@@ -94,15 +94,9 @@ if World2 or World3 then
         SaveSetting()
     end)
 
-    section:Toggle("Auto Awaken", _G.Settings.Raid["Auto Awaken"], function(value)
-        _G.Settings.Raid["Auto Awaken"] = value
-        SaveSetting()
-    end)
+    
 
-    section:Toggle("Law Raid", _G.Settings.Raid["Law Raid"], function(value)
-        _G.Settings.Raid["Law Raid"] = value
-        SaveSetting()
-    end)
+    
 
     -- Adicionando toggle de Teleporte para Laboratório dentro da aba de Raid
     section:Toggle("Teleport to Lab", _G.Settings.SeaStack["Teleport To Lab"], function(value)
@@ -110,25 +104,11 @@ if World2 or World3 then
         SaveSetting()
     end)
 end)
-
-    section:Toggle("Auto Awaken", _G.Settings.Raid["Auto Awaken"], function(value)
-        _G.Settings.Raid["Auto Awaken"] = value
-        SaveSetting()
-    end)
-    section:Toggle("Law Raid", _G.Settings.Raid["Law Raid"], function(value)
-        _G.Settings.Raid["Law Raid"] = value
-        SaveSetting()
-    end)
-end)
 ;
 end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
 local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004")
-TeleportTab:Toggle("Teleport to Lab", _G.Settings.SeaStack["Teleport To Lab"], function(value)
-    _G.Settings.SeaStack["Teleport To Lab"] = value
-    SaveSetting()
-end)
-;
+
 local ShopTab = Library:Tab("Loja", "rbxassetid://10734952479");
 local FruitTab = Library:Tab("Frutas", "rbxassetid://10734883986");
 local MiscTab = Library:Tab("Outros", "rbxassetid://10723424838");
