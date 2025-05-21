@@ -10703,6 +10703,7 @@ if World2 or World3 then
 			end;
 		end);
 	end);
+
 RaidTab:Toggle("Auto Start Raid", _G.Settings.Raid["Auto Start Raid"], function(value)
     _G.Settings.Raid["Auto Start Raid"] = value
     SaveSetting()
@@ -10713,7 +10714,7 @@ RaidTab:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(valu
     SaveSetting()
 end);
 
-RaidTab:Toggle("Auto Kill Raid Mobs", _G.Settings.Raid["Auto Kill Raid Mobs"], function(value)
+RaidTab:Toggle("Auto Kill Mobs", _G.Settings.Raid["Auto Kill Mobs"], function(value)
     _G.Settings.Raid["Auto Kill Raid Mobs"] = value
     SaveSetting()
 end);
@@ -10723,10 +10724,10 @@ RaidTab:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], functio
     SaveSetting()
 end);
 
-RaidTab:Toggle("Auto Awaken", false, "Auto Awaken When Done Raid", function(value)
-		_G.Settings.Raid["Auto Awaken"] = value;
-		(getgenv()).SaveSetting();
-	end);
+RaidTab:Toggle("Auto Awaken", false, function(value)
+	_G.Settings.Raid["Auto Awaken"] = value;
+	SaveSetting();
+end);
 	spawn(function()
 		while wait(0.2) do
 			if _G.Settings.Raid["Auto Awaken"] then
