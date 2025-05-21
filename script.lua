@@ -84,27 +84,6 @@ end;
 local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
 RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
-
-RaidTab:Toggle("Auto Start Raid", _G.Settings.Raid["Auto Start Raid"], function(value)
-    _G.Settings.Raid["Auto Start Raid"] = value
-    SaveSetting()
-end)
-
-RaidTab:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(value)
-    _G.Settings.Raid["Auto Buy Chip"] = value
-    SaveSetting()
-end)
-
-RaidTab:Toggle("Auto Kill Raid Mobs", _G.Settings.Raid["Auto Kill Raid Mobs"], function(value)
-    _G.Settings.Raid["Auto Kill Raid Mobs"] = value
-    SaveSetting()
-end)
-
-RaidTab:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], function(value)
-    _G.Settings.Raid["Auto Next Island"] = value
-    SaveSetting()
-end)
-
 end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
 local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
@@ -10724,30 +10703,25 @@ if World2 or World3 then
 			end;
 		end);
 	end);
-	RaidTab:Toggle("Auto Raid (full)", _G.Settings.Raid["Auto Dungeon"], "Start, Buy Chip, Kill Mob, Next Island", function(value)
-		_G.Settings.Raid["Auto Dungeon"] = value;
-		StopTween(_G.Settings.Raid["Auto Dungeon"]);
-		(getgenv()).SaveSetting();
-	end);
-	RaidTab:Toggle("Auto Start Raid", _G.Settings.Raid["Auto Start Raid"], function(value)
+RaidTab:Toggle("Auto Start Raid", _G.Settings.Raid["Auto Start Raid"], function(value)
     _G.Settings.Raid["Auto Start Raid"] = value
     SaveSetting()
-end)
+end);
 
 RaidTab:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(value)
     _G.Settings.Raid["Auto Buy Chip"] = value
     SaveSetting()
-end)
+end);
 
 RaidTab:Toggle("Auto Kill Raid Mobs", _G.Settings.Raid["Auto Kill Raid Mobs"], function(value)
     _G.Settings.Raid["Auto Kill Raid Mobs"] = value
     SaveSetting()
-end)
+end);
 
 RaidTab:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], function(value)
     _G.Settings.Raid["Auto Next Island"] = value
     SaveSetting()
-end)
+end);
 
 RaidTab:Toggle("Auto Awaken", false, "Auto Awaken When Done Raid", function(value)
 		_G.Settings.Raid["Auto Awaken"] = value;
