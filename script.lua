@@ -322,11 +322,11 @@ _G.Settings = {
 		["Enable PvP"] = false
 	},
 	Raid = {
-		[        ["Auto Start Raid"] = false,
-        ["Auto Buy Chip"] = false,
-        ["Auto Kill Raid Mobs"] = false,
-        ["Auto Next Island"] = false,
-"Selected Chip"] = nil,
+		["Auto Start Raid"] = false,
+    ["Auto Buy Chip"] = false,
+    ["Auto Kill Raid Mobs"] = false,
+    ["Auto Next Island"] = false,
+    ["Selected Chip"] = nil,
 		["Auto Dungeon"] = false,
 		["Auto Awaken"] = false,
 		["Price Devil Fruit"] = 1000000,
