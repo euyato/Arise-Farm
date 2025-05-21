@@ -3901,12 +3901,12 @@ if World3 then
 	local BoneQuestPos = CFrame.new(-9516.99316, 172.017181, 6078.46533, 0, 0, -1, 0, 1, 0, 1, 0, 0);
 	spawn(function()
 		while wait(0.2) do
-			if _G.Settings.Farm["Selected Bone Mode"] == "Quest" and _G.Settings.Farm["Auto Farm Bone"] and World3 then
+	if _G.Settings.Farm["Selected Bone Farm Mode"] == "Quest" and _G.Settings.Farm["Auto Farm Bone"] and World3 then
 				pcall(function()
 					local QuestTitle = (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
-					if not string.find(QuestTitle, "Haunted") then
-    (game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("AbandonQuest");
-end;
+					if not string.find(QuestTitle, "Demonic Soul") then
+						(game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("AbandonQuest");
+					end;
 					if (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 						topos(BoneQuestPos);
 						if (BoneQuestPos.Position - (game:GetService("Players")).LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
@@ -3917,7 +3917,8 @@ end;
 							for i, v in pairs((game:GetService("Workspace")).Enemies:GetChildren()) do
 								if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 									if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
-										repeat
+										if string.find((game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Demonic Soul") then
+											repeat
 												(game:GetService("RunService")).Heartbeat:wait();
 												EquipWeapon(_G.Settings.Main["Selected Weapon"]);
 												AutoHaki();
@@ -3929,6 +3930,7 @@ end;
 												v.Head.CanCollide = false;
 												Attack();
 											until not _G.Settings.Farm["Auto Farm Bone"] or v.Humanoid.Health <= 0 or (not v.Parent) or (game:GetService("Players")).LocalPlayer.PlayerGui.Main.Quest.Visible == false;
+										end;
 									end;
 								end;
 							end;
