@@ -84,6 +84,27 @@ end;
 local CombatTab = Library:Tab("Combate", "rbxassetid://10734975486");
 if World2 or World3 then
 RaidTab = Library:Tab("Raid", "rbxassetid://10723345749");
+
+RaidTab:Toggle("Auto Start Raid", _G.Settings.Raid["Auto Start Raid"], function(value)
+    _G.Settings.Raid["Auto Start Raid"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(value)
+    _G.Settings.Raid["Auto Buy Chip"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Kill Raid Mobs", _G.Settings.Raid["Auto Kill Raid Mobs"], function(value)
+    _G.Settings.Raid["Auto Kill Raid Mobs"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], function(value)
+    _G.Settings.Raid["Auto Next Island"] = value
+    SaveSetting()
+end)
+
 end;
 local EspTab = Library:Tab("Esp Rastreio", "rbxassetid://10723346959");
 local TeleportTab = Library:Tab("Teleporte", "rbxassetid://10734886004");
@@ -322,7 +343,11 @@ _G.Settings = {
 		["Enable PvP"] = false
 	},
 	Raid = {
-		["Selected Chip"] = nil,
+		[        ["Auto Start Raid"] = false,
+        ["Auto Buy Chip"] = false,
+        ["Auto Kill Raid Mobs"] = false,
+        ["Auto Next Island"] = false,
+"Selected Chip"] = nil,
 		["Auto Dungeon"] = false,
 		["Auto Awaken"] = false,
 		["Price Devil Fruit"] = 1000000,
@@ -10686,36 +10711,45 @@ if World2 or World3 then
 	RaidTab:Dropdown("Chip Raid", Raidslist, _G.Settings.Raid["Selected Chip"], function(value)
 		_G.Settings.Raid["Selected Chip"] = value;
 	end);
-spawn(function()
-pcall(function()
-while wait(0.2) do
-if _G.Settings.Raid["Auto Dungeon"] then
-if GetFruitsInfo() then
-local frutas = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("getInventoryFruits")
-local frutasComuns = {}
-                    
-for _, fruta in pairs(frutas) do
-if fruta.Rarity == 1 then
-table.insert(frutasComuns, fruta)
-end;
-end;
-
-if frutasComuns[1] then
-game.ReplicatedStorage.Remotes.CommF_:InvokeServer("LoadFruit", frutasComuns[1].Name)
-wait(0.5)
-game.ReplicatedStorage.Remotes.CommF_:InvokeServer("RaidsNpc", "Select", _G.Settings.Raid["Selected Chip"])
-end;
-end;
-end;
-end;
-end);
-end);
+	spawn(function()
+		pcall(function()
+			while wait(0.2) do
+				if _G.Settings.Raid["Auto Dungeon"] then
+					if not (game:GetService("Players")).LocalPlayer.Backpack:FindFirstChild("Special Microchip") or (not (game:GetService("Players")).LocalPlayer.Character:FindFirstChild("Special Microchip")) then
+						if not (game:GetService("Workspace"))._WorldOrigin.Locations:FindFirstChild("Island 1") then
+							(game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("RaidsNpc", "Select", _G.Settings.Raid["Selected Chip"]);
+						end;
+					end;
+				end;
+			end;
+		end);
+	end);
 	RaidTab:Toggle("Auto Raid (full)", _G.Settings.Raid["Auto Dungeon"], "Start, Buy Chip, Kill Mob, Next Island", function(value)
 		_G.Settings.Raid["Auto Dungeon"] = value;
 		StopTween(_G.Settings.Raid["Auto Dungeon"]);
 		(getgenv()).SaveSetting();
 	end);
-	RaidTab:Toggle("Auto Awaken", false, "Auto Awaken When Done Raid", function(value)
+	RaidTab:Toggle("Auto Start Raid", _G.Settings.Raid["Auto Start Raid"], function(value)
+    _G.Settings.Raid["Auto Start Raid"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Buy Chip", _G.Settings.Raid["Auto Buy Chip"], function(value)
+    _G.Settings.Raid["Auto Buy Chip"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Kill Raid Mobs", _G.Settings.Raid["Auto Kill Raid Mobs"], function(value)
+    _G.Settings.Raid["Auto Kill Raid Mobs"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Next Island", _G.Settings.Raid["Auto Next Island"], function(value)
+    _G.Settings.Raid["Auto Next Island"] = value
+    SaveSetting()
+end)
+
+RaidTab:Toggle("Auto Awaken", false, "Auto Awaken When Done Raid", function(value)
 		_G.Settings.Raid["Auto Awaken"] = value;
 		(getgenv()).SaveSetting();
 	end);
@@ -12143,3 +12177,67 @@ for _, v in pairs(resultNormal) do
 	end;
 end;
 print("Script Carregado!");
+
+-- Lógica separada para funções de Auto Raid
+spawn(function()
+    while task.wait(1) do
+        if _G.Settings.Raid["Auto Start Raid"] then
+            -- lógica para iniciar raid aqui
+            print("Iniciando Raid...")
+        end
+        if _G.Settings.Raid["Auto Buy Chip"] then
+            -- lógica para comprar chip
+            print("Comprando Chip...")
+        end
+        if _G.Settings.Raid["Auto Kill Raid Mobs"] then
+            -- lógica para matar mobs
+            print("Matando mobs da Raid...")
+        end
+        if _G.Settings.Raid["Auto Next Island"] then
+            -- lógica para avançar ilha
+            print("Indo para próxima ilha...")
+        end
+    end
+end)
+
+-- Lógica funcional separada para funções de Auto Raid
+spawn(function()
+    local Replicated = game:GetService("ReplicatedStorage")
+
+    while task.wait(1) do
+        if _G.Settings.Raid["Auto Buy Chip"] then
+            local chip = _G.Settings.Raid["Selected Chip"]
+            if chip then
+                pcall(function()
+                    Replicated.Remotes.CommF_:InvokeServer("RaidsNpc", "Select", chip)
+                end)
+            end
+        end
+
+        if _G.Settings.Raid["Auto Start Raid"] then
+            pcall(function()
+                Replicated.Remotes.CommF_:InvokeServer("RaidsNpc", "Start")
+            end)
+        end
+
+        if _G.Settings.Raid["Auto Kill Raid Mobs"] then
+            pcall(function()
+                for _, mob in pairs(workspace.Enemies:GetChildren()) do
+                    if mob:FindFirstChild("Humanoid") and mob:FindFirstChild("HumanoidRootPart") and mob.Humanoid.Health > 0 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0, 25, 0)
+                        wait(0.2)
+                    end
+                end
+            end)
+        end
+
+        if _G.Settings.Raid["Auto Next Island"] then
+            local NextIsland = workspace:FindFirstChild("NextIsland")
+            if NextIsland and NextIsland:FindFirstChild("CFrameValue") then
+                pcall(function()
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = NextIsland.CFrameValue.Value
+                end)
+            end
+        end
+    end
+end)
